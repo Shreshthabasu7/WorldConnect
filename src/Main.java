@@ -1,9 +1,17 @@
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import java.io.IOException;
 
 public class Main {
 
     public static void main(String[] args) {
+
+        try {
+            String response = Geocoding.searchLocation("New York");
+            System.out.println(response);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
                               
         JFrame frame = new JFrame("WorldConnect");
