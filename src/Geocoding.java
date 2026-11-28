@@ -2,6 +2,16 @@ import java.net.*;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 
+/**
+ * Uses the Open-Meteo Geocoding API to get the coordinates
+ * and time zone of a city.
+ *
+ * I chose Open-Meteo over Google Maps because it returns
+ * both in one request without needing an API key.
+ *
+ * Reference: https://open-meteo.com/en/docs/geocoding-api
+ */  
+
 public class Geocoding {
     public static String searchLocation(String city)
             throws IOException {

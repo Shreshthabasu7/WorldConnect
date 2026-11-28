@@ -1,3 +1,9 @@
+/**
+ * Stores the information of each person added to WorldConnect.
+ * The coordinates are needed to show their location on the map
+ * and the time zone is used to find their current local time.
+ */
+
 public class Person {
     private String name;
     private String city;
