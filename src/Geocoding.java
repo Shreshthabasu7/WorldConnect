@@ -30,5 +30,44 @@ public class Geocoding {
         return result;
     }
 
+    public static double getLatitude(String result) {
+        int start = result.indexOf("\"latitude\":") + 11;
+        int end = result.indexOf(",", start);
+
+        return Double.parseDouble(result.substring(start, end));
+    }
+
+    public static double getLongitude(String result) {
+        int start = result.indexOf("\"longitude\":") + 12;
+        int end = result.indexOf(",", start);
+
+        return Double.parseDouble(result.substring(start, end));
+    }
+
+    public static String getTimeZone(String result) {
+        int start = result.indexOf("\"timezone\":") + 12;
+        int end = result.indexOf("\"", start);
+
+        return result.substring(start, end);
+    }
+
+    public static Person createPerson(String name, String city)
+        throws IOException {
+
+        String result = searchLocation(city);
+
+        if (!result.contains("\"latitude\":")
+                || !result.contains("\"longitude\":")
+                || !result.contains("\"timezone\":\"")) {
+            throw new IOException("Location not found");
+        }
+
+        double latitude = getLatitude(result);
+        double longitude = getLongitude(result);
+        String timeZone = getTimeZone(result);
+
+        return new Person(name, city, timeZone, latitude, longitude);
+    }
+
        
 }

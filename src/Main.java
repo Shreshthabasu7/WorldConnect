@@ -7,10 +7,14 @@ public class Main {
     public static void main(String[] args) {
 
         try {
-            String response = Geocoding.searchLocation("New York");
-            System.out.println(response);
+            Person p = Geocoding.createPerson("Alice", "New York");
+
+            System.out.println(p.getLatitude());
+            System.out.println(p.getLongitude());
+            System.out.println(p.getTimeZone());
+
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
 
                               
